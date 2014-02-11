@@ -17,6 +17,8 @@ def main():
 	print help_msg
 	input_str = ""
 
+	update_dictionary()
+
 	while input_str != "exit":
 		input_str = prompt()
 
@@ -24,6 +26,14 @@ def main():
 			usage()
 
 		choose_op(input_str)
+
+	update_list()
+
+#read in the list from a file
+def update_dictionary():
+
+#write the current threads
+def update_list():
 
 def usage():
 	print usage
@@ -51,7 +61,7 @@ def remove(board_letter, board_number):
 def update(board_letter, board_number):
 
 	new_string = url_str_main + board_letter + url_str_res + board_number
-	if not check_url():
+	if check_url():
 		call(["./dta.sh", new_string, board_letter, board_number])
 	else:
 		print "thread is 404\n removing thread"
@@ -69,7 +79,7 @@ def check_url(new_string):
     else:
     	return false
 
-
+main()
 
 
 		
