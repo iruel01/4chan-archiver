@@ -49,7 +49,7 @@ def remove(board_letter, board_number):
 
 def update(board_letter, board_number):
 	new_string = url_str_main + board_letter + url_str_res + board_number
-	call(["./dta.sh", "new_string"])
+	call(["./dta.sh", new_string, board_letter, board_number])
 
 
 
