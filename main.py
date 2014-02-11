@@ -2,6 +2,7 @@
 
 import sys
 import os
+from subprocess import call
 
 current_threads = {}
 greet = "4chan image archiver - Alice (iruel01 on github)"
@@ -47,6 +48,9 @@ def list(board_letter):
 def remove(board_letter, board_number):
 
 def update(board_letter, board_number):
+	new_string = url_str_main + board_letter + url_str_res + board_number
+	call(["./dta.sh", "new_string"])
+
 
 
 
