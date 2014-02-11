@@ -3,6 +3,7 @@
 import sys
 import os
 from subprocess import call
+import urllib2
 
 current_threads = {}
 greet = "4chan image archiver - Alice (iruel01 on github)"
@@ -48,8 +49,25 @@ def list(board_letter):
 def remove(board_letter, board_number):
 
 def update(board_letter, board_number):
+
 	new_string = url_str_main + board_letter + url_str_res + board_number
-	call(["./dta.sh", new_string, board_letter, board_number])
+	if not check_url():
+		call(["./dta.sh", new_string, board_letter, board_number])
+	else:
+		print "thread is 404\n removing thread"
+		remove(board_letter, board_number)
+
+def check_url(new_string):
+		req = urllib2.Request(new_string)
+	try:
+    	resp = urllib2.urlopen(req)
+	except urllib2.URLError, e:
+    	if e.code == 404:
+    		return false
+    	else:
+    		return true
+    else:
+    	return false
 
 
 
