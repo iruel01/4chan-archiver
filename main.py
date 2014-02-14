@@ -12,28 +12,13 @@ usage = "add thread <board letter(s)> <thread number>\nlist threads <board lette
 url_str_main = "boards.4chan/"
 url_str_res = "res/"
 
-def main():
-	print greet
-	print help_msg
-	input_str = ""
-
-	update_dictionary()
-
-	while input_str != "exit":
-		input_str = prompt()
-
-		if input_str == "help":
-			usage()
-
-		choose_op(input_str)
-
-	update_list()
-
 #read in the list from a file
 def update_dictionary():
-	
+	pass
+
 #write the current threads
 def update_list():
+	pass
 
 def usage():
 	print usage
@@ -55,6 +40,8 @@ def choose_op(input_str):
 		remove(args[2], args[3])
 	elif args[0] == "update" and args[1] == "thread":
 		update(args[2], args[3])
+	elif args[0] == "help":
+		usage()
 	else:
 		usage()
 
@@ -94,18 +81,32 @@ def update(board_letter, board_number):
 		remove(board_letter, board_number)
 
 def check_url(new_string):
-		req = urllib2.Request(new_string)
+	req = urllib2.Request(new_string)
 	try:
-    	resp = urllib2.urlopen(req)
+		resp = urllib2.urlopen(req)
 	except urllib2.URLError, e:
-    	if e.code == 404:
-    		return false
-    	else:
-    		return true
-    else:
-    	return false
+		if e.code == 404:
+			return false
+		else:
+			return true
+	else:
+		return false
+
+def main():
+	print greet
+	print help_msg
+	input_str = ""
+
+	update_dictionary()
+
+	while input_str != "exit":
+		input_str = prompt()
+
+		if input_str == "help":
+			usage()
+
+		choose_op(input_str)
+
+	update_list()
 
 main()
-
-
-		
