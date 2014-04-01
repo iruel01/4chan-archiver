@@ -79,9 +79,9 @@ def update(board_letter, board_number):
 		print new_string
 		call(["mkdir", board_letter])
 		call(["mkdir", board_letter + "/" + board_number])
-		os.system("cd" + " " + "/" + board_letter + "/" + board_number)
-		os.system("./dta.sh" + " " + new_string)
-		os.system("cd" + " " + "../../")
+		os.chdir(board_letter + "/" + board_number)
+		os.system("../../dta.sh" + " " + new_string)
+		os.chdir("../../")
 	else:
 		print "thread is 404\n removing thread"
 		remove(board_letter, board_number)
