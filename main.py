@@ -36,7 +36,7 @@ def choose_op(input_str):
 		add(args[2], args[3])
 		update(args[2], args[3])
 	elif args[0] == "list" and args[1] == "thread":
-		list(args[2])
+		list_thr(args[2])
 	elif args[0] == "remove" and args[1] == "thread":
 		remove(args[2], args[3])
 	elif args[0] == "update" and args[1] == "thread":
@@ -49,7 +49,7 @@ def choose_op(input_str):
 def add(board_letter, board_number):
 	new_string = url_str_main + board_letter + "/" + url_str_res + board_number
 
-def list(board_letter):
+def list_thr(board_letter):
 	print "current threads"
 	if board_letter in current_threads:
 		print current_threads[board_letter]
@@ -57,20 +57,21 @@ def list(board_letter):
 		"no threads for that board"
 
 def remove(board_letter, board_number):
-	if check_url(board_letter, board_number):
-		current_threads[board_letter].remove(board_number)
-	else:
-		print "thread does not exist"
-		return
+	#if check_if(board_letter, board_number):
+	#	current_threads[board_letter].remove(board_number)
+	#else:
+	#	print "thread does not exist"
+	#	return
+	pass
 
 def check_if(board_letter, board_number):
 	if board_number in current_threads[board_letter]:
-		return true
+		return True
 	else:
-		return false
+		return False
 
 def update(board_letter, board_number):
-	if not check_if:
+	if not check_if(board_letter, board_number):
 		print "thread does not exist"
 		return
 
