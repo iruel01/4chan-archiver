@@ -87,15 +87,14 @@ def update(board_letter, board_number):
 		remove(board_letter, board_number)
 
 def check_url(new_string):
-	return 1
 	req = urllib2.Request(new_string)
 	try:
 		resp = urllib2.urlopen(req)
 	except urllib2.URLError, e:
 		if e.code == 404:
-			return false
+			return False
 		else:
-			return true
+			return True
 	else:
 		return false
 
